@@ -21,16 +21,12 @@ public class BusinessUserService {
     }
 
     public BusinessUser findById(UUID id){
-        return this.businessUserDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
+        return businessUserDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     public BusinessUser save(BusinessUserDTO user){
         if(businessUserDAO.existsByVatNumber(user.vatNumber())) throw new BadRequestException("This VAT number already exist.");
-        BusinessUser newUser = new BusinessUser();
-        newUser.setBusinessName(user.businessName());
-        newUser.setVatNumber(user.vatNumber());
-        newUser.setAddress(user.address());
-
+        BusinessUser newUser = new BusinessUser(user.address(), user.businessName(), user.vatNumber());
         return businessUserDAO.save(newUser);
     }
 }

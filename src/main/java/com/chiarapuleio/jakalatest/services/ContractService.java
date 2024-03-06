@@ -29,26 +29,18 @@ public class ContractService {
     }
 
     public Contract findById(UUID id){
-        return this.contractDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
+        return contractDAO.findById(id).orElseThrow(()-> new NotFoundException(id));
     }
 
     public Contract savePrivate(ContractDTO contract){
         PrivateUser customer = privateUserSrv.findById(contract.customerId());
-        Contract newContract = new Contract();
-        newContract.setContractType(contract.contractType());
-        newContract.setStartingDate(contract.startingDate());
-        newContract.setCustomer(customer);
-
+        Contract newContract = new Contract(contract.contractType(), contract.startingDate(), customer);
         return contractDAO.save(newContract);
     }
 
     public Contract saveBusiness(ContractDTO contract){
         BusinessUser customer = businessUserSrv.findById(contract.customerId());
-        Contract newContract = new Contract();
-        newContract.setContractType(contract.contractType());
-        newContract.setStartingDate(contract.startingDate());
-        newContract.setCustomer(customer);
-
+        Contract newContract = new Contract(contract.contractType(), contract.startingDate(), customer);
         return contractDAO.save(newContract);
     }
 

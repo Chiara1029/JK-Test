@@ -1,14 +1,12 @@
 package com.chiarapuleio.jakalatest.controllers;
 
 import com.chiarapuleio.jakalatest.entities.Contract;
-import com.chiarapuleio.jakalatest.enums.ContractType;
 import com.chiarapuleio.jakalatest.payloads.ContractDTO;
 import com.chiarapuleio.jakalatest.services.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;

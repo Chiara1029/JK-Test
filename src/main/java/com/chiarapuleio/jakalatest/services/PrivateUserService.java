@@ -21,17 +21,12 @@ public class PrivateUserService {
     }
 
     public PrivateUser findById(UUID id){
-        return this.privateUserDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
+        return privateUserDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     public PrivateUser save(PrivateUserDTO user){
         if(privateUserDAO.existsByTaxCode(user.taxCode())) throw new BadRequestException("This tax code already exist.");
-        PrivateUser newUser = new PrivateUser();
-        newUser.setName(user.name());
-        newUser.setLastName(user.lastName());
-        newUser.setTaxCode(user.taxCode());
-        newUser.setAddress(user.address());
-
+        PrivateUser newUser = new PrivateUser(user.name(), user.lastName(), user.taxCode(), user.address());
         return privateUserDAO.save(newUser);
     }
 }

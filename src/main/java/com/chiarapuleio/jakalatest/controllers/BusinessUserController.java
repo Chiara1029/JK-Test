@@ -1,7 +1,6 @@
 package com.chiarapuleio.jakalatest.controllers;
 
 import com.chiarapuleio.jakalatest.entities.BusinessUser;
-import com.chiarapuleio.jakalatest.exceptions.BadRequestException;
 import com.chiarapuleio.jakalatest.payloads.BusinessUserDTO;
 import com.chiarapuleio.jakalatest.services.BusinessUserService;
 import org.springframework.beans.factory.annotation.Autowired;
