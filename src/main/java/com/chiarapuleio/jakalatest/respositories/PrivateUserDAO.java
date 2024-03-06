@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface PrivateUserDAO extends JpaRepository<PrivateUser, UUID> {
+    boolean existsByTaxCode(String taxCode);
 }

@@ -19,21 +19,17 @@ public class BusinessUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BusinessUser saveUser(@RequestBody BusinessUserDTO user) throws Exception{
-        try{
-            return businessUserSrv.save(user);
-        } catch (Exception ex){
-            throw new BadRequestException(ex.getMessage());
-        }
+    public BusinessUser saveUser(@RequestBody BusinessUserDTO user) {
+        return businessUserSrv.save(user);
     }
 
     @GetMapping
-    public List<BusinessUser> getBusinessUsers(){
+    public List<BusinessUser> getBusinessUsers() {
         return businessUserSrv.getBusinessUsers();
     }
 
     @GetMapping("/{userId}")
-    public BusinessUser findById(@PathVariable UUID userId){
+    public BusinessUser findById(@PathVariable UUID userId) {
         return businessUserSrv.findById(userId);
     }
 }
