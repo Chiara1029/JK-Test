@@ -1,6 +1,7 @@
 package com.chiarapuleio.jakalatest.services;
 
 import com.chiarapuleio.jakalatest.entities.BusinessUser;
+import com.chiarapuleio.jakalatest.exceptions.BadRequestException;
 import com.chiarapuleio.jakalatest.exceptions.NotFoundException;
 import com.chiarapuleio.jakalatest.payloads.BusinessUserDTO;
 import com.chiarapuleio.jakalatest.respositories.BusinessUserDAO;
@@ -24,6 +25,7 @@ public class BusinessUserService {
     }
 
     public BusinessUser save(BusinessUserDTO user){
+        if(businessUserDAO.existsByVatNumber(user.vatNumber())) throw new BadRequestException("This VAT number already exist.");
         BusinessUser newUser = new BusinessUser();
         newUser.setBusinessName(user.businessName());
         newUser.setVatNumber(user.vatNumber());

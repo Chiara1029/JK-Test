@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface BusinessUserDAO extends JpaRepository<BusinessUser, UUID> {
+    boolean existsByVatNumber(Long vatNumber);
 }

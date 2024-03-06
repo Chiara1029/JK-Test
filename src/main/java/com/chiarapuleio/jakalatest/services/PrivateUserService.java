@@ -1,6 +1,7 @@
 package com.chiarapuleio.jakalatest.services;
 
 import com.chiarapuleio.jakalatest.entities.PrivateUser;
+import com.chiarapuleio.jakalatest.exceptions.BadRequestException;
 import com.chiarapuleio.jakalatest.exceptions.NotFoundException;
 import com.chiarapuleio.jakalatest.payloads.PrivateUserDTO;
 import com.chiarapuleio.jakalatest.respositories.PrivateUserDAO;
@@ -24,6 +25,7 @@ public class PrivateUserService {
     }
 
     public PrivateUser save(PrivateUserDTO user){
+        if(privateUserDAO.existsByTaxCode(user.taxCode())) throw new BadRequestException("This tax code already exist.");
         PrivateUser newUser = new PrivateUser();
         newUser.setName(user.name());
         newUser.setLastName(user.lastName());

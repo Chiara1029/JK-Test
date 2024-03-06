@@ -20,21 +20,17 @@ public class PrivateUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PrivateUser saveUser(@RequestBody PrivateUserDTO user) throws Exception{
-        try{
-            return privateUserSrv.save(user);
-        } catch (Exception ex){
-            throw new BadRequestException(ex.getMessage());
-        }
+    public PrivateUser saveUser(@RequestBody PrivateUserDTO user) {
+        return privateUserSrv.save(user);
     }
 
     @GetMapping
-    public List<PrivateUser> getPrivateUsers(){
+    public List<PrivateUser> getPrivateUsers() {
         return privateUserSrv.getPrivateUsers();
     }
 
     @GetMapping("/{userId}")
-    public PrivateUser findById(@PathVariable UUID userId){
+    public PrivateUser findById(@PathVariable UUID userId) {
         return privateUserSrv.findById(userId);
     }
 }
