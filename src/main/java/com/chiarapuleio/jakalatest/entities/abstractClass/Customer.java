@@ -1,6 +1,7 @@
 package com.chiarapuleio.jakalatest.entities.abstractClass;
 
 import com.chiarapuleio.jakalatest.entities.Contract;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public abstract class Customer {
     protected UUID id;
     protected String address;
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     protected List<Contract> contracts;
 
     public Customer(String address) {
