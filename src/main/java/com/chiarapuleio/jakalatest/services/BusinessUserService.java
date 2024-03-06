@@ -15,7 +15,7 @@ public class BusinessUserService {
     @Autowired
     private BusinessUserDAO businessUserDAO;
 
-    public List<BusinessUser> getBusinessUser(){
+    public List<BusinessUser> getBusinessUsers(){
         return this.businessUserDAO.findAll();
     }
 
