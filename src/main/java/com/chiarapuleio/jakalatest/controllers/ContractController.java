@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,5 +38,10 @@ public class ContractController {
     @GetMapping("/{contractId}")
     public Contract findById(@PathVariable UUID contractId){
         return contractSrv.findById(contractId);
+    }
+
+    @GetMapping("/filterByStartingDate")
+    public List<Contract> filterByStartingDate(@RequestParam LocalDate date){
+        return contractSrv.filterByStartingDate(date);
     }
 }
