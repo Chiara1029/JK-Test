@@ -50,4 +50,14 @@ public class ContractController {
     public List<Contract> filterByContractType(@RequestParam String contractType){
         return contractSrv.filterByType(contractType);
     }
+
+    @GetMapping("/private")
+    public List<Contract> filterByNameAndLastName(@RequestParam String name, @RequestParam String lastName){
+        return contractSrv.filterByNameAndLastName(name, lastName);
+    }
+
+    @GetMapping("/business")
+    public List<Contract> filterByBusinessName(@RequestParam String businessName){
+        return contractSrv.filterByBusinessName(businessName);
+    }
 }

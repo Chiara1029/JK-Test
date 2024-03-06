@@ -62,4 +62,12 @@ public class ContractService {
             return contractDAO.findByContractType(ContractType.valueOf(type));
         } else throw new BadRequestException("Invalid type. Use type: GAS, ELECTRICITY or GAS_AND_ELECTRICITY");
     }
+
+    public List<Contract> filterByNameAndLastName(String name, String lastName){
+        return contractDAO.findByNameAndLastName(name, lastName);
+    }
+
+    public List<Contract> filterByBusinessName(String businessName){
+        return contractDAO.findByBusinessName(businessName);
+    }
 }
