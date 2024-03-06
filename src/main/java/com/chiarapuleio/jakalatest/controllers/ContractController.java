@@ -1,6 +1,7 @@
 package com.chiarapuleio.jakalatest.controllers;
 
 import com.chiarapuleio.jakalatest.entities.Contract;
+import com.chiarapuleio.jakalatest.enums.ContractType;
 import com.chiarapuleio.jakalatest.payloads.ContractDTO;
 import com.chiarapuleio.jakalatest.services.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,10 @@ public class ContractController {
     @GetMapping("/filterByStartingDate")
     public List<Contract> filterByStartingDate(@RequestParam LocalDate date){
         return contractSrv.filterByStartingDate(date);
+    }
+
+    @GetMapping("/filterByType")
+    public List<Contract> filterByContractType(@RequestParam String contractType){
+        return contractSrv.filterByType(contractType);
     }
 }

@@ -3,6 +3,8 @@ package com.chiarapuleio.jakalatest.services;
 import com.chiarapuleio.jakalatest.entities.BusinessUser;
 import com.chiarapuleio.jakalatest.entities.Contract;
 import com.chiarapuleio.jakalatest.entities.PrivateUser;
+import com.chiarapuleio.jakalatest.enums.ContractType;
+import com.chiarapuleio.jakalatest.exceptions.BadRequestException;
 import com.chiarapuleio.jakalatest.exceptions.NotFoundException;
 import com.chiarapuleio.jakalatest.payloads.ContractDTO;
 import com.chiarapuleio.jakalatest.respositories.ContractDAO;
@@ -52,5 +54,12 @@ public class ContractService {
 
     public List<Contract> filterByStartingDate(LocalDate date){
         return contractDAO.findByStartingDate(date);
+    }
+
+    public List<Contract> filterByType(String contractType){
+        String type = contractType.toUpperCase();
+        if(type.equals("GAS") || type.equals("ELECTRICITY") || type.equals("GAS_AND_ELECTRICITY")){
+            return contractDAO.findByContractType(ContractType.valueOf(type));
+        } else throw new BadRequestException("Invalid type. Use type: GAS, ELECTRICITY or GAS_AND_ELECTRICITY");
     }
 }
