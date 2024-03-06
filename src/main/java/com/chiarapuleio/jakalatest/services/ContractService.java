@@ -70,4 +70,12 @@ public class ContractService {
     public List<Contract> filterByBusinessName(String businessName){
         return contractDAO.findByBusinessName(businessName);
     }
+
+    public List<Contract> filterByPrivateUser(){
+        return contractDAO.findByPrivateUser();
+    }
+
+    public List<Contract> filterByBusinessUser(){
+        return contractDAO.findByBusinessUser();
+    }
 }
