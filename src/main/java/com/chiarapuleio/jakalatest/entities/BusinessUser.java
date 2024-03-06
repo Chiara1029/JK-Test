@@ -14,9 +14,9 @@ import lombok.Setter;
 @DiscriminatorValue("BUSINESS")
 public class BusinessUser extends Customer {
     private String businessName;
-    private String vatNumber;
+    private Long vatNumber;
 
-    public BusinessUser(String address, String businessName, String vatNumber) {
+    public BusinessUser(String address, String businessName, Long vatNumber) {
         super(address);
         this.businessName = businessName;
         this.vatNumber = vatNumber;
